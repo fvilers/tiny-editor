@@ -49,5 +49,22 @@ export const createToolbar = execCommand => {
     createButton('bold', 'Bold', createIcon('fas fa-bold'), execCommand)
   );
 
+  // Italic
+  toolbar.insertAdjacentElement(
+    'beforeend',
+    createButton('italic', 'Italic', createIcon('fas fa-italic'), execCommand)
+  );
+
+  // Underline
+  toolbar.insertAdjacentElement(
+    'beforeend',
+    createButton(
+      'underline',
+      'Underline',
+      createIcon('fas fa-underline'),
+      execCommand
+    )
+  );
+
   return toolbar;
 };
