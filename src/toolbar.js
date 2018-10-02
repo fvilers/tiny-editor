@@ -1,6 +1,7 @@
 import { createSelect } from './select';
 import { createButton } from './button';
 import { createIcon } from './icon';
+import { createInput } from './input';
 
 export const createToolbar = execCommand => {
   const toolbar = document.createElement('div');
@@ -64,6 +65,12 @@ export const createToolbar = execCommand => {
       createIcon('fas fa-underline'),
       execCommand
     )
+  );
+
+  // Text color
+  toolbar.insertAdjacentElement(
+    'beforeend',
+    createInput('forecolor', 'Text color', 'color', execCommand)
   );
 
   return toolbar;
