@@ -7,7 +7,13 @@ export const transformToEditor = editor => {
   // Add a custom class
   editor.className = '__editor';
 
+  // Create an exec command function
+  const execCommand = (commandId, value) => {
+    document.execCommand(commandId, false, value);
+    editor.focus();
+  };
+
   // Create a toolbar
-  const toolbar = createToolbar();
+  const toolbar = createToolbar(execCommand);
   editor.insertAdjacentElement('beforebegin', toolbar);
 };
