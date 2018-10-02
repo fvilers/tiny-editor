@@ -10,3 +10,9 @@
 .__editor:focus {
   outline: none;
 }
+
+.__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+}
