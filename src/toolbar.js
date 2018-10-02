@@ -3,6 +3,13 @@ import { createButton } from './button';
 import { createIcon } from './icon';
 import { createInput } from './input';
 
+const createSeparator = () => {
+  const separator = document.createElement('span');
+  separator.className = '__toolbar-separator';
+
+  return separator;
+};
+
 export const createToolbar = execCommand => {
   const toolbar = document.createElement('div');
   toolbar.className = '__toolbar';
@@ -72,6 +79,9 @@ export const createToolbar = execCommand => {
     'beforeend',
     createInput('forecolor', 'Text color', 'color', execCommand)
   );
+
+  // Separator
+  toolbar.insertAdjacentElement('beforeend', createSeparator());
 
   return toolbar;
 };
