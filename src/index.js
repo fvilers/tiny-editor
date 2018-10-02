@@ -1,3 +1,5 @@
+import { transformToEditor } from './editor';
+
 (function() {
-  console.log('Tiny Editor loaded.');
+  document.querySelectorAll('[data-tiny-editor]').forEach(transformToEditor);
 })();
