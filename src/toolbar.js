@@ -83,5 +83,99 @@ export const createToolbar = execCommand => {
   // Separator
   toolbar.insertAdjacentElement('beforeend', createSeparator());
 
+  // Left align
+  toolbar.insertAdjacentElement(
+    'beforeend',
+    createButton(
+      'justifyleft',
+      'Left align',
+      createIcon('fas fa-align-left'),
+      execCommand
+    )
+  );
+
+  // Center align
+  toolbar.insertAdjacentElement(
+    'beforeend',
+    createButton(
+      'justifycenter',
+      'Center align',
+      createIcon('fas fa-align-center'),
+      execCommand
+    )
+  );
+
+  // Right align
+  toolbar.insertAdjacentElement(
+    'beforeend',
+    createButton(
+      'justifyright',
+      'Right align',
+      createIcon('fas fa-align-right'),
+      execCommand
+    )
+  );
+
+  // Separator
+  toolbar.insertAdjacentElement('beforeend', createSeparator());
+
+  // Numbered list
+  toolbar.insertAdjacentElement(
+    'beforeend',
+    createButton(
+      'insertorderedlist',
+      'Numbered list',
+      createIcon('fas fa-list-ol'),
+      execCommand
+    )
+  );
+
+  // Bulleted list
+  toolbar.insertAdjacentElement(
+    'beforeend',
+    createButton(
+      'insertunorderedlist',
+      'Bulleted list',
+      createIcon('fas fa-list-ul'),
+      execCommand
+    )
+  );
+
+  // Decrease indent
+  toolbar.insertAdjacentElement(
+    'beforeend',
+    createButton(
+      'outdent',
+      'Decrease indent',
+      createIcon('fas fa-indent fa-flip-horizontal'),
+      execCommand
+    )
+  );
+
+  // Increase indent
+  toolbar.insertAdjacentElement(
+    'beforeend',
+    createButton(
+      'indent',
+      'Increase indent',
+      createIcon('fas fa-indent'),
+      execCommand
+    )
+  );
+
+  // Separator
+  toolbar.insertAdjacentElement('beforeend', createSeparator());
+
+  // Clear formatting
+  toolbar.insertAdjacentElement(
+    'beforeend',
+    createButton(
+      'removeFormat',
+      'Clear formatting',
+      createIcon('fas fa-eraser'),
+      execCommand
+    )
+  );
+
   return toolbar;
 };
