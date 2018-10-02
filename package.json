@@ -1,0 +1,23 @@
+{
+  "name": "tiny-editor",
+  "version": "0.0.0",
+  "description": "A tiny HTML rich text editor written in vanilla JavaScript",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fvilers/tiny-editor.git"
+  },
+  "keywords": [
+    "tiny",
+    "editor",
+    "wysiwyg",
+    "hmlt",
+    "vanilla",
+    "javascript"
+  ],
+  "author": "Fabian Vilers <fabian.vilers@dev-one.com> (https://www.dev-one.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fvilers/tiny-editor/issues"
+  },
+  "homepage": "https://github.com/fvilers/tiny-editor#readme"
+}
