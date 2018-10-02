@@ -14,6 +14,6 @@ export const transformToEditor = editor => {
   };
 
   // Create a toolbar
-  const toolbar = createToolbar(execCommand);
+  const toolbar = createToolbar(editor.dataset, execCommand);
   editor.insertAdjacentElement('beforebegin', toolbar);
 };

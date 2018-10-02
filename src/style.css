@@ -35,3 +35,7 @@
   border-left: solid 1px #e0e0e0;
   margin-right: 7px;
 }
+
+.__toolbar-separator:last-child {
+  display: none;
+}
