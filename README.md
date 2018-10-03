@@ -29,13 +29,26 @@ or load the bundle file directly at the end of your HTML document.
 
 3. Add a `data-tiny-editor` attribute to the HTML element you want to transform into an editor
 
+## How to exact the formatted text
+
+Listen for the `input` event on the editor HTML element.
+
+```
+document
+  .querySelectorAll('[data-tiny-editor]')
+  .forEach(editor =>
+    editor.addEventListener('input', e => console.log(e.target.innerHTML);
+  )
+);
+```
+
 ## How to customize
 
 There are various options that can be used to customize how the Tiny Editor will be rendered. By default, every options are enabled. You can disable an option using data attributes.
 
 For example, you can remove the bold format button using the following attribte:
 
-```
+````
 <div data-tiny-editor data-bold="no"></div>
 ```
 
@@ -60,3 +73,4 @@ For example, you can remove the bold format button using the following attribte:
 ## Supported browsers
 
 Modern browser (Chrome, Firefox, Edge,...) are supported. Tiny Editor doesn't work on Internet Explorer.
+````
