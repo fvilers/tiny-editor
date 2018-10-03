@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -8,7 +9,8 @@ module.exports = {
     new CleanWebpackPlugin(['demo']),
     new HtmlWebpackPlugin({
       template: 'public/index.html'
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   output: {
     filename: 'main.js',
@@ -21,5 +23,11 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       }
     ]
-  }
+  },
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './demo',
+    hot: true
+  },
+  mode: 'development'
 };
