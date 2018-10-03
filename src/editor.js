@@ -93,7 +93,7 @@ export const transformToEditor = editor => {
     );
     if (textColor) {
       const fontNode = findNodeByName(nodes, 'font');
-      textColor.value = fontNode && fontNode.color ? font.color : '#000000';
+      textColor.value = fontNode && fontNode.color ? fontNode.color : '#000000';
     }
   };
   editor.addEventListener('keydown', updateActiveState);
