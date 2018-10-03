@@ -8,14 +8,24 @@ Create a less than 5 Kb (compressed) library that enables a HTML element to be u
 
 ## How to install
 
-TODO
+```
+npm install tiny-editor
+```
+
+or load the bundle file directly at the end of your HTML document.
+
+```
+<script src="https://unpkg.com/tiny-editor/dist/bundle.js"></script>
+```
 
 ## How to use
 
 1. Reference the editor library in your HTML document
 2. Add a link tag in your HTML document `<head>` to load the [Font Awesome](https://fontawesome.com/) icon set
 
-`<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">`
+```
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+```
 
 3. Add a `data-tiny-editor` attribute to the HTML element you want to transform into an editor
 
