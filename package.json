@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "A tiny HTML rich text editor written in vanilla JavaScript",
   "scripts": {
+    "build": "rollup -c",
     "build:demo": "webpack --config webpack.prod.js",
     "predeploy": "npm run build:demo",
     "deploy": "gh-pages -d demo",
@@ -32,6 +33,7 @@
     "css-loader": "1.0.0",
     "gh-pages": "^2.0.0",
     "html-webpack-plugin": "3.2.0",
+    "rollup": "^0.66.2",
     "source-map-explorer": "^1.6.0",
     "style-loader": "0.23.0",
     "webpack": "4.20.2",
