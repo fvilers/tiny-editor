@@ -6,7 +6,8 @@
     "build": "webpack --config webpack.prod.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "start": "webpack-dev-server --open --config webpack.dev.js"
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "analyze": "npm run build && source-map-explorer dist/main.*"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "css-loader": "1.0.0",
     "gh-pages": "^2.0.0",
     "html-webpack-plugin": "3.2.0",
+    "source-map-explorer": "^1.6.0",
     "style-loader": "0.23.0",
     "webpack": "4.20.2",
     "webpack-cli": "3.1.2",
