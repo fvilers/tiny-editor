@@ -4,6 +4,8 @@
   "description": "A tiny HTML rich text editor written in vanilla JavaScript",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "start": "webpack-dev-server --open --config webpack.dev.js"
   },
   "repository": {
@@ -23,10 +25,11 @@
   "bugs": {
     "url": "https://github.com/fvilers/tiny-editor/issues"
   },
-  "homepage": "https://github.com/fvilers/tiny-editor#readme",
+  "homepage": "https://fvilers.github.io/tiny-editor",
   "devDependencies": {
     "clean-webpack-plugin": "0.1.19",
     "css-loader": "1.0.0",
+    "gh-pages": "^2.0.0",
     "html-webpack-plugin": "3.2.0",
     "style-loader": "0.23.0",
     "webpack": "4.20.2",
