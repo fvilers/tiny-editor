@@ -1,4 +1,5 @@
 {
+  "plugins": ["transform-import-styles"],
   "presets": [
     [
       "@babel/preset-env",
