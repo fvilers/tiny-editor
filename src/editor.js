@@ -81,7 +81,7 @@ export const transformToEditor = editor => {
     );
     if (fontList) {
       const fontNode = findNodeByName(nodes, 'font');
-      const value = fontNode && fontNode.face ? fontNomontrde.face : 'serif';
+      const value = fontNode && fontNode.face ? fontNode.face : 'serif';
       fontList.selectedIndex = Array.from(fontList.options).find(
         option => option.value === value
       );
