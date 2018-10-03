@@ -56,3 +56,7 @@ For example, you can remove the bold format button using the following attribte:
 - `data-outdent="no"`: remove the decrease indent button
 - `data-indent="no"`: remove the increase indent button
 - `data-remove-format="no"`: remove the clear formatting button
+
+## Supported browsers
+
+Modern browser (Chrome, Firefox, Edge,...) are supported. Tiny Editor doesn't work on Internet Explorer.
