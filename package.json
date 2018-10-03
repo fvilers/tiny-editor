@@ -1,6 +1,6 @@
 {
   "name": "tiny-editor",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A tiny HTML rich text editor written in vanilla JavaScript",
   "scripts": {
     "build": "rollup -c",
