@@ -1,4 +1,5 @@
 import { createToolbar } from './toolbar';
+import { BEFORE_BEGIN } from './constants';
 
 export const transformToEditor = editor => {
   // Indicate that the element is editable
@@ -18,5 +19,5 @@ export const transformToEditor = editor => {
 
   // Create a toolbar
   const toolbar = createToolbar(editor.dataset, execCommand);
-  editor.insertAdjacentElement('beforebegin', toolbar);
+  editor.insertAdjacentElement(BEFORE_BEGIN, toolbar);
 };

@@ -2,6 +2,9 @@ import { createSelect } from './select';
 import { createButton } from './button';
 import { createIcon } from './icon';
 import { createInput } from './input';
+import { BEFORE_END } from './constants';
+
+const NO = 'no';
 
 const createSeparator = () => {
   const separator = document.createElement('span');
@@ -15,9 +18,9 @@ export const createToolbar = (options, execCommand) => {
   toolbar.className = '__toolbar';
 
   // Styles
-  if (options.formatblock !== 'no') {
+  if (options.formatblock !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createSelect(
         'formatblock',
         'Styles',
@@ -37,9 +40,9 @@ export const createToolbar = (options, execCommand) => {
   }
 
   // Font
-  if (options.fontname !== 'no') {
+  if (options.fontname !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createSelect(
         'fontname',
         'Font',
@@ -56,25 +59,25 @@ export const createToolbar = (options, execCommand) => {
   }
 
   // Bold
-  if (options.bold !== 'no') {
+  if (options.bold !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createButton('bold', 'Bold', createIcon('fas fa-bold'), execCommand)
     );
   }
 
   // Italic
-  if (options.italic !== 'no') {
+  if (options.italic !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createButton('italic', 'Italic', createIcon('fas fa-italic'), execCommand)
     );
   }
 
   // Underline
-  if (options.underline !== 'no') {
+  if (options.underline !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createButton(
         'underline',
         'Underline',
@@ -85,20 +88,20 @@ export const createToolbar = (options, execCommand) => {
   }
 
   // Text color
-  if (options.forecolor !== 'no') {
+  if (options.forecolor !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createInput('forecolor', 'Text color', 'color', execCommand)
     );
   }
 
   // Separator
-  toolbar.insertAdjacentElement('beforeend', createSeparator());
+  toolbar.insertAdjacentElement(BEFORE_END, createSeparator());
 
   // Left align
-  if (options.justifyleft !== 'no') {
+  if (options.justifyleft !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createButton(
         'justifyleft',
         'Left align',
@@ -109,9 +112,9 @@ export const createToolbar = (options, execCommand) => {
   }
 
   // Center align
-  if (options.justifycenter !== 'no') {
+  if (options.justifycenter !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createButton(
         'justifycenter',
         'Center align',
@@ -122,9 +125,9 @@ export const createToolbar = (options, execCommand) => {
   }
 
   // Right align
-  if (options.justifyright !== 'no') {
+  if (options.justifyright !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createButton(
         'justifyright',
         'Right align',
@@ -135,12 +138,12 @@ export const createToolbar = (options, execCommand) => {
   }
 
   // Separator
-  toolbar.insertAdjacentElement('beforeend', createSeparator());
+  toolbar.insertAdjacentElement(BEFORE_END, createSeparator());
 
   // Numbered list
-  if (options.insertorderedlist !== 'no') {
+  if (options.insertorderedlist !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createButton(
         'insertorderedlist',
         'Numbered list',
@@ -151,9 +154,9 @@ export const createToolbar = (options, execCommand) => {
   }
 
   // Bulleted list
-  if (options.insertunorderedlist !== 'no') {
+  if (options.insertunorderedlist !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createButton(
         'insertunorderedlist',
         'Bulleted list',
@@ -164,9 +167,9 @@ export const createToolbar = (options, execCommand) => {
   }
 
   // Decrease indent
-  if (options.outdent !== 'no') {
+  if (options.outdent !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createButton(
         'outdent',
         'Decrease indent',
@@ -177,9 +180,9 @@ export const createToolbar = (options, execCommand) => {
   }
 
   // Increase indent
-  if (options.indent !== 'no') {
+  if (options.indent !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createButton(
         'indent',
         'Increase indent',
@@ -190,12 +193,12 @@ export const createToolbar = (options, execCommand) => {
   }
 
   // Separator
-  toolbar.insertAdjacentElement('beforeend', createSeparator());
+  toolbar.insertAdjacentElement(BEFORE_END, createSeparator());
 
   // Clear formatting
-  if (options.removeFormat !== 'no') {
+  if (options.removeFormat !== NO) {
     toolbar.insertAdjacentElement(
-      'beforeend',
+      BEFORE_END,
       createButton(
         'removeFormat',
         'Clear formatting',
