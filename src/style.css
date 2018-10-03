@@ -26,7 +26,8 @@
   padding: 5px;
 }
 
-.__toolbar-item:hover {
+.__toolbar-item:hover,
+.__toolbar-item.active {
   background: #f0f0f0;
 }
 
