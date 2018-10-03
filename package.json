@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --open",
     "analyze": "npm run build && source-map-explorer dist/bundle.js",
     "version": "npm run build",
-    "postversion": "git push && git push --tags && npm publish dist"
+    "postversion": "git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",
