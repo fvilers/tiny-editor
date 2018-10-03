@@ -84,7 +84,7 @@ export const transformToEditor = editor => {
       const value = fontNode && fontNode.face ? fontNode.face : 'serif';
       fontList.selectedIndex = Array.from(fontList.options).find(
         option => option.value === value
-      );
+      ).index;
     }
 
     // Notify text color about the current color
