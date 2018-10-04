@@ -54,7 +54,6 @@ For example, you can remove the bold format button using the following attribte:
 
 ### Options
 
-- `data-height="(value)"`: set the editor's height
 - `data-formatblock="no"`: remove the styles drop down list
 - `data-bold="no"`: remove the bold button
 - `data-italic="no"`: : remove the italic button

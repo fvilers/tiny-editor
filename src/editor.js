@@ -18,9 +18,6 @@ export const transformToEditor = editor => {
   // Add a custom class
   editor.className = '__editor';
 
-  // Set height
-  editor.style.height = editor.dataset.height || '400px';
-
   // Create an exec command function
   const execCommand = (commandId, value) => {
     document.execCommand(commandId, false, value);
