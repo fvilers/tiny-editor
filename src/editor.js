@@ -1,24 +1,14 @@
 import { createToolbar } from './toolbar';
 import { BEFORE_BEGIN } from './constants';
 
-export const findNodeByName = (nodes, name) =>
-  nodes.find(node => node.nodeName.toLowerCase() === name);
+const rgbToHex = color => {
+  const digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec(color);
+  const red = parseInt(digits[2]);
+  const green = parseInt(digits[3]);
+  const blue = parseInt(digits[4]);
+  const rgb = blue | (green << 8) | (red << 16);
 
-export const findNodeByStyle = (nodes, styleProp, value) =>
-  nodes.find(node => node.style[styleProp] === value);
-
-const activeMatcher = {
-  bold: nodes => !!findNodeByName(nodes, 'b'),
-  italic: nodes => !!findNodeByName(nodes, 'i'),
-  underline: nodes => !!findNodeByName(nodes, 'u'),
-  justifyleft: nodes => !!findNodeByStyle(nodes, 'textAlign', 'left'),
-  justifycenter: nodes => !!findNodeByStyle(nodes, 'textAlign', 'center'),
-  justifyright: nodes => !!findNodeByStyle(nodes, 'textAlign', 'right'),
-  insertorderedlist: nodes => !!findNodeByName(nodes, 'ol'),
-  insertunorderedlist: nodes => !!findNodeByName(nodes, 'ul'),
-  outdent: _ => false, // This command has no active state
-  indent: _ => false, // This command has no active state
-  removeFormat: _ => false // This command has no active state
+  return digits[1] + '#' + rgb.toString(16).padStart(6, '0');
 };
 
 export const transformToEditor = editor => {
@@ -37,63 +27,34 @@ export const transformToEditor = editor => {
     editor.focus();
   };
 
+  // Set default paragraph to <p>
+  execCommand('defaultParagraphSeparator', 'p');
+
   // Create a toolbar
   const toolbar = createToolbar(editor.dataset, execCommand);
   editor.insertAdjacentElement(BEFORE_BEGIN, toolbar);
 
   // Listen for events to detect where the caret is
   const updateActiveState = () => {
-    const selection = document.getSelection();
-    let current = selection.anchorNode;
-    const nodes = [];
-
-    while (current) {
-      if (current.dataset && current.dataset.hasOwnProperty('tinyEditor')) {
-        break;
-      }
-
-      if (current.nodeType === 1) {
-        nodes.push(current);
-      }
-
-      current = current.parentNode;
-    }
-
-    // Notify toolbar buttons about active style
-    const toolbarItems = toolbar.querySelectorAll('button[data-command-id]');
-    for (const item of toolbarItems) {
-      const active = activeMatcher[item.dataset.commandId](nodes);
-      item.classList.toggle('active', active);
-    }
-
-    // Notify the styles drop down list
-    const stylesList = toolbar.querySelector(
-      "select[data-command-id='formatblock']"
-    );
-    if (stylesList) {
-      // TODO: handle specific tag (h1->h6, pre, p) and tag combinations
-      // (hx + bold in it doesn't render a <b> tag but <span style="font-weight: normal;">)
-    }
-
-    // Notify the font drop down list
-    const fontList = toolbar.querySelector(
-      "select[data-command-id='fontname']"
-    );
-    if (fontList) {
-      const fontNode = findNodeByName(nodes, 'font');
-      const value = fontNode && fontNode.face ? fontNode.face : 'serif';
-      fontList.selectedIndex = Array.from(fontList.options).find(
+    const toolbarSelects = toolbar.querySelectorAll('select[data-command-id]');
+    for (const select of toolbarSelects) {
+      const value = document.queryCommandValue(select.dataset.commandId);
+      const option = Array.from(select.options).find(
         option => option.value === value
-      ).index;
+      );
+      select.selectedIndex = option ? option.index : -1;
     }
 
-    // Notify text color about the current color
-    const textColor = toolbar.querySelector(
-      "input[data-command-id='forecolor']"
-    );
-    if (textColor) {
-      const fontNode = findNodeByName(nodes, 'font');
-      textColor.value = fontNode && fontNode.color ? fontNode.color : '#000000';
+    const toolbarButtons = toolbar.querySelectorAll('button[data-command-id]');
+    for (const button of toolbarButtons) {
+      const active = document.queryCommandState(button.dataset.commandId);
+      button.classList.toggle('active', active);
+    }
+
+    const inputButtons = toolbar.querySelectorAll('input[data-command-id]');
+    for (const input of inputButtons) {
+      const value = document.queryCommandValue(input.dataset.commandId);
+      input.value = rgbToHex(value);
     }
   };
   editor.addEventListener('keydown', updateActiveState);

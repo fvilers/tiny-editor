@@ -1,6 +1,8 @@
 .__editor {
   background: #ffffff;
   border: solid 1px #e0e0e0;
+  color: #000000;
+  font-family: 'serif';
   margin-top: 10px;
   overflow: scroll;
   padding: 10px;
