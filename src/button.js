@@ -5,6 +5,7 @@ export const createButton = (commandId, title, children, execCommand) => {
   button.dataset.commandId = commandId;
   button.className = TOOLBAR_ITEM;
   button.title = title;
+  button.type = 'button';
   button.insertAdjacentElement(BEFORE_END, children);
   button.addEventListener('click', () => execCommand(commandId));
 
