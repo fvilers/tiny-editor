@@ -37,7 +37,7 @@ Listen for the `input` event on the editor HTML element.
 document
   .querySelectorAll('[data-tiny-editor]')
   .forEach(editor =>
-    editor.addEventListener('input', e => console.log(e.target.innerHTML);
+    editor.addEventListener('input', e => console.log(e.target.innerHTML)
   )
 );
 ```
