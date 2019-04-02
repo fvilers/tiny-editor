@@ -6,6 +6,12 @@ A tiny HTML rich text editor written in vanilla JavaScript
 
 Create a less than 5 Kb (compressed) library that enables a HTML element to be used as a rich text editor in plain old vanilla JavaScript.
 
+## Support
+
+If you use and like this library, feel free to support my Open Source projects.
+
+[![donate](https://www.paypalobjects.com/en_US/BE/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JZ26X897M9V9L&currency_code=EUR)
+
 ## How to install
 
 ```
