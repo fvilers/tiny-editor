@@ -35,7 +35,7 @@ or load the bundle file directly at the end of your HTML document.
 
 3. Add a `data-tiny-editor` attribute to the HTML element you want to transform into an editor
 
-## How to exact the formatted text
+## How to extract the formatted text
 
 Listen for the `input` event on the editor HTML element.
 
