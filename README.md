@@ -52,7 +52,7 @@ document
 
 There are various options that can be used to customize how the Tiny Editor will be rendered. By default, every options are enabled. You can disable an option using data attributes.
 
-For example, you can remove the bold format button using the following attribte:
+For example, you can remove the bold format button using the following attribute:
 
 ````
 <div data-tiny-editor data-bold="no"></div>
