@@ -78,4 +78,3 @@ For example, you can remove the bold format button using the following attribute
 ## Supported browsers
 
 Modern browser (Chrome, Firefox, Edge,...) are supported. Tiny Editor doesn't work on Internet Explorer.
-````
