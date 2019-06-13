@@ -56,7 +56,7 @@ For example, you can remove the bold format button using the following attribute
 
 ````
 <div data-tiny-editor data-bold="no"></div>
-```
+````
 
 ### Options
 
