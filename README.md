@@ -18,6 +18,13 @@ If you use and like this library, feel free to support my Open Source projects.
 npm install tiny-editor
 ```
 
+or directy from a dist branch with ssh
+
+```
+npm install git+ssh://git@github.com:syonfox/tiny-editor.git#dist
+```
+
+
 or load the bundle file directly at the end of your HTML document.
 
 ```
@@ -35,6 +42,16 @@ or load the bundle file directly at the end of your HTML document.
 
 3. Add a `data-tiny-editor` attribute to the HTML element you want to transform into an editor
 
+
+### optional js dynamic initialization
+```js
+
+let div = document.createElement('div');
+div.setAttribute('data-tiny-editor', '');//probably not needed
+document.body.appendChild(div);
+transformToEditor(div);
+
+```
 ## How to extract the formatted text
 
 Listen for the `input` event on the editor HTML element.
@@ -46,6 +63,7 @@ document
     editor.addEventListener('input', e => console.log(e.target.innerHTML)
   )
 );
+
 ```
 
 ## How to customize
