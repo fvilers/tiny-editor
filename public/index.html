@@ -10,8 +10,8 @@
       height: 200px;
     }
   </style>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
 <body>
@@ -37,6 +37,25 @@
       persecuti eum in.
     </p>
   </div>
+
+  <h3>Dynamically created</h3>
+  <button id="create-editor">Create editor</button>
+
+  <script>
+    function createEditor(e) {
+      const button = e.currentTarget;
+      const div = document.createElement("div");
+
+      div.dataset["tinyEditor"] = "";
+      button.after(div);
+      window.__tinyEditor.transformToEditor(div);
+      button.removeEventListener("click", createEditor);
+    }
+
+    (function () {
+      document.getElementById("create-editor").addEventListener("click", createEditor)
+    })();
+  </script>
 </body>
 
 </html>

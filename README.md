@@ -35,6 +35,10 @@ or load the bundle file directly at the end of your HTML document.
 
 3. Add a `data-tiny-editor` attribute to the HTML element you want to transform into an editor
 
+## How to dynamically create an editor
+
+Use the exported function `window.__tinyEditor.transformToEditor()` which take as the first argument the DOM element (usually a `<div>`) that you want to transform to an editor. Refer to the `/public/index.html` for an example.
+
 ## How to extract the formatted text
 
 Listen for the `input` event on the editor HTML element.
@@ -54,9 +58,9 @@ There are various options that can be used to customize how the Tiny Editor will
 
 For example, you can remove the bold format button using the following attribute:
 
-````
+```
 <div data-tiny-editor data-bold="no"></div>
-````
+```
 
 ### Options
 
