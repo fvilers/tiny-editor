@@ -1,6 +1,32 @@
-export const createIcon = className => {
-  const icon = document.createElement('i');
-  icon.className = className;
+const getFontAwesomeIcon = icon => {
+  const faIcons = {
+    'format_bold': 'fas fa-bold',
+    'format_italic': 'fas fa-italic',
+    'format_underline': 'fas fa-underline',
+    'format_align_left': 'fas fa-align-left',
+    'format_align_center': 'fas fa-align-center',
+    'format_align_right': 'fas fa-align-left',
+    'format_list_numbered': 'fas fa-list-ul',
+    'list': 'fas fa-list-ol',
+    'format_indent_decrease': 'fas fa-indent fa-flip-horizontal',
+    'format_indent_increase': 'fas fa-indent',
+    'format_clear': 'fas fa-eraser'
+  };
 
-  return icon;
+  return faIcons[icon];
+}
+
+export const createIcon = (icon, iconset) => {
+  const i = document.createElement('i');
+
+  if (iconset == 'material') {
+    i.className = 'material-icons';
+    i.innerHTML = icon;
+  } else {
+    i.className = getFontAwesomeIcon(icon);
+  }
+
+  return i;
 };
+
+
