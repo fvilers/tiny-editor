@@ -27,10 +27,14 @@ or load the bundle file directly at the end of your HTML document.
 ## How to use
 
 1. Reference the editor library in your HTML document
-2. Add a link tag in your HTML document `<head>` to load the [Font Awesome](https://fontawesome.com/) icon set
+2. Add a link tag in your HTML document `<head>` to load the [Font Awesome](https://fontawesome.com/) or [Material Icons](https://fonts.google.com/icons?icon.set=Material+Icons) icon set:
 
 ```
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+```
+
+```
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 ```
 
 3. Add a `data-tiny-editor` attribute to the HTML element you want to transform into an editor
@@ -62,6 +66,8 @@ For example, you can remove the bold format button using the following attribute
 <div data-tiny-editor data-bold="no"></div>
 ```
 
+Additionally, you can toggle the styles of the icons in the toolbar using Material Icons or FontAwesome via the ``data-iconset`` attribute. By default, loads FontAwesome icons.
+
 ### Options
 
 - `data-formatblock="no"`: remove the styles drop down list
@@ -78,6 +84,7 @@ For example, you can remove the bold format button using the following attribute
 - `data-outdent="no"`: remove the decrease indent button
 - `data-indent="no"`: remove the increase indent button
 - `data-remove-format="no"`: remove the clear formatting button
+- `data-iconset="material"`: set the iconography of the toolbar to Material Icons.
 
 ## Supported browsers
 
