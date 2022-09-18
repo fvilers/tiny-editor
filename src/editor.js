@@ -16,7 +16,7 @@ export const transformToEditor = editor => {
   editor.setAttribute('contentEditable', true);
 
   // Add a custom class
-  editor.className = '__editor';
+  editor.className = 'ww-editor';
 
   // Create an exec command function
   const execCommand = (commandId, value) => {

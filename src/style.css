@@ -1,4 +1,4 @@
-.__editor {
+.ww-editor {
   background: #ffffff;
   border: solid 1px #e0e0e0;
   color: #000000;
@@ -8,17 +8,17 @@
   padding: 10px;
 }
 
-.__editor:focus {
+.ww-editor:focus {
   outline: none;
 }
 
-.__toolbar {
+.ww-toolbar {
   display: flex;
   flex-wrap: wrap;
   padding: 5px;
 }
 
-.__toolbar-item {
+.ww-toolbar-item {
   background: #ffffff;
   border: 0;
   border-radius: 3px;
@@ -28,16 +28,16 @@
   padding: 5px;
 }
 
-.__toolbar-item:hover,
-.__toolbar-item.active {
+.ww-toolbar-item:hover,
+.ww-toolbar-item.active {
   background: #f0f0f0;
 }
 
-.__toolbar-separator {
+.ww-toolbar-separator {
   border-left: solid 1px #e0e0e0;
   margin-right: 7px;
 }
 
-.__toolbar-separator:last-child {
+.ww-toolbar-separator:last-child {
   display: none;
 }

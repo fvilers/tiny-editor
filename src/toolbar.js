@@ -8,14 +8,14 @@ const NO = 'no';
 
 const createSeparator = () => {
   const separator = document.createElement('span');
-  separator.className = '__toolbar-separator';
+  separator.className = 'ww-toolbar-separator';
 
   return separator;
 };
 
 export const createToolbar = (options, execCommand) => {
   const toolbar = document.createElement('div');
-  toolbar.className = '__toolbar';
+  toolbar.className = 'ww-toolbar';
 
   // Styles
   if (options.formatblock !== NO) {
@@ -91,7 +91,7 @@ export const createToolbar = (options, execCommand) => {
       createButton(
         'underline',
         'Underline',
-        createIcon('format_underline', options.iconset),
+        createIcon('format_underlined', options.iconset),
         execCommand
       )
     );

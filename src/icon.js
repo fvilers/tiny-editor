@@ -2,7 +2,7 @@ const getFontAwesomeIcon = icon => {
   const faIcons = {
     'format_bold': 'fas fa-bold',
     'format_italic': 'fas fa-italic',
-    'format_underline': 'fas fa-underline',
+    'format_underlined': 'fas fa-underline',
     'format_align_left': 'fas fa-align-left',
     'format_align_center': 'fas fa-align-center',
     'format_align_right': 'fas fa-align-left',
@@ -19,8 +19,11 @@ const getFontAwesomeIcon = icon => {
 export const createIcon = (icon, iconset) => {
   const i = document.createElement('i');
 
-  if (iconset == 'material') {
+  if (iconset == 'material-icons') {
     i.className = 'material-icons';
+    i.innerHTML = icon;
+  } else if (iconset == 'material-symbols') {
+    i.className = 'material-symbols';
     i.innerHTML = icon;
   } else {
     i.className = getFontAwesomeIcon(icon);
