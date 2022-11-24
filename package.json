@@ -38,7 +38,7 @@
     "load-styles": "^2.0.0",
     "rollup": "^0.66.2",
     "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-postcss": "^1.6.2",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-uglify": "^6.0.4",
     "source-map-explorer": "^1.6.0",
     "style-loader": "0.23.0",
