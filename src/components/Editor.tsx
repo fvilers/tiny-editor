@@ -20,32 +20,6 @@ const rgbToHex = (color: string): string => {
 }
 
 const Editor: FunctionComponent<Props> = ({ options }) => {
-  /*
-  const updateActiveState = () => {
-    const toolbarSelects = toolbar.querySelectorAll('select[data-command-id]')
-    for (const select of toolbarSelects) {
-      const value = document.queryCommandValue(select.dataset.commandId)
-      const option = Array.from(select.options).find(
-        option => option.value === value
-      )
-      select.selectedIndex = option ? option.index : -1
-    }
-
-    const toolbarButtons = toolbar.querySelectorAll('button[data-command-id]')
-    for (const button of toolbarButtons) {
-      const active = document.queryCommandState(button.dataset.commandId)
-      button.classList.toggle('active', active)
-    }
-
-    const inputButtons = toolbar.querySelectorAll('input[data-command-id]')
-    for (const input of inputButtons) {
-      const value = document.queryCommandValue(input.dataset.commandId)
-      input.value = rgbToHex(value)
-    }
-  }
-
-  */
-
   const execCommand = (commandId: string, value: string): undefined => {
     document.execCommand(commandId, false, value)
     // editor.focus() TODO

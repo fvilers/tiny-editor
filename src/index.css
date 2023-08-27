@@ -28,9 +28,12 @@
   padding: 5px;
 }
 
-.__toolbar-item:hover,
-.__toolbar-item.active {
+.__toolbar-item:hover {
   background: #f0f0f0;
+}
+
+.__toolbar-item.active {
+  background: #d0d0d0;
 }
 
 .__toolbar-separator {
