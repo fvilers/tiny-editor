@@ -37,12 +37,12 @@ const styleOptions = [
   { value: 'h4', text: 'Title 4' },
   { value: 'h5', text: 'Title 5' },
   { value: 'h6', text: 'Title 6' },
-  { value: 'p', text: 'Paragraph', selected: true },
+  { value: 'p', text: 'Paragraph' },
   { value: 'pre', text: 'Preformatted' }
 ]
 
 const fontOptions = [
-  { value: 'serif', text: 'Serif', selected: true },
+  { value: 'serif', text: 'Serif' },
   { value: 'sans-serif', text: 'Sans Serif' },
   { value: 'monospace', text: 'Monospace' },
   { value: 'cursive', text: 'Cursive' },
@@ -58,9 +58,9 @@ const Toolbar: FunctionComponent<Props> = ({ options, onChange }: Props) => {
     opt.map((value: string, index) => {
       switch (value) {
         case 'formatblock':
-          return <Select key={index} commandId='formatblock' title='Styles' options={styleOptions} onChange={onChange} />
+          return <Select key={index} commandId='formatblock' title='Styles' defaultValue='p' options={styleOptions} onChange={onChange} />
         case 'fontname':
-          return <Select key={index} commandId='fontname' title='Font' options={fontOptions} onChange={onChange} />
+          return <Select key={index} commandId='fontname' title='Font' defaultValue='serif' options={fontOptions} onChange={onChange} />
         case 'bold':
           return <Button key={index} commandId='bold' title='Bold' onClick={onChange} ><Icon className='fas fa-bold' /></Button>
         case 'italic':
