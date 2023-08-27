@@ -15,7 +15,7 @@ const Button: FunctionComponent<Props> = ({ title, children, onClick, commandId 
   const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     if (event.target instanceof SVGElement) {
       setActive(active !== true)
-      onClick(commandId, event.target.dataset.icon)
+      onClick(commandId, active !== true)
     }
   }
   return <button type='button' title={title} className={className} onClick={handleClick}>{children}</button>
