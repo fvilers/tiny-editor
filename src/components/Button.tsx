@@ -8,10 +8,11 @@ interface Props {
 }
 
 const Button: FunctionComponent<Props> = ({ title, children, onClick, commandId }: Props) => {
-  const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
-    onClick(commandId, e.target)
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
+    if (event.target instanceof SVGElement) {
+      onClick(commandId, event.target.dataset.icon)
+    }
   }
-
   return <button type='button' title={title} className='__toolbar-item' onClick={handleClick}>{children}</button>
 }
 

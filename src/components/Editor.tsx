@@ -19,7 +19,7 @@ const rgbToHex = (color: string): string => {
   return digits[1] + '#' + rgb.toString(16).padStart(6, '0')
 }
 
-export const Editor: FunctionComponent<Props> = ({ options }) => {
+const Editor: FunctionComponent<Props> = ({ options }) => {
   /*
   const updateActiveState = () => {
     const toolbarSelects = toolbar.querySelectorAll('select[data-command-id]')
@@ -54,8 +54,9 @@ export const Editor: FunctionComponent<Props> = ({ options }) => {
   // Set default paragraph to <p>
   execCommand('defaultParagraphSeparator', 'p')
 
-  const onChangeToolbar = (commandId: string, target: any): undefined => {
-    console.log('onChangeToolbar', commandId, target)
+  const onChangeToolbar = (commandId: string, value: any): undefined => {
+    console.log('onChangeToolbar', commandId, value)
+    execCommand(commandId, value)
   }
 
   const onKeyUpdown: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
@@ -77,4 +78,4 @@ export const Editor: FunctionComponent<Props> = ({ options }) => {
   </>
 }
 
-// export default Editor
+export default Editor

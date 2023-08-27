@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.21",
+    "@types/react-icons": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "clean-webpack-plugin": "0.1.19",
     "css-loader": "6.7.3",
@@ -54,6 +55,11 @@
     "webpack-merge": "4.1.4"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@react-icons/all-files": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
