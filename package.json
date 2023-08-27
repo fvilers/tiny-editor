@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "rollup -c",
-    "start": "npx tsc && webpack-dev-server --open",
+    "start": "webpack-dev-server --open",
     "analyze": "npm run build && source-map-explorer dist/bundle.js",
     "version": "npm run build",
     "postversion": "git push && git push --tags && npm publish"
@@ -28,13 +28,8 @@
     "url": "https://github.com/jcable/react-tiny-editor/issues"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/preset-react": "^7.22.5",
     "@types/react": "^18.2.21",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
-    "babel-loader": "^9.1.3",
-    "babel-plugin-transform-import-styles": "0.0.11",
-    "babel-template": "^6.26.0",
     "clean-webpack-plugin": "0.1.19",
     "css-loader": "6.7.3",
     "eslint": "^8.48.0",
@@ -51,6 +46,7 @@
     "rollup-plugin-uglify": "^6.0.4",
     "source-map-explorer": "^1.6.0",
     "style-loader": "3.3.1",
+    "ts-loader": "^9.4.4",
     "typescript": "^5.2.2",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
