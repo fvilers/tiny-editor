@@ -1,28 +1,23 @@
-import React, { type KeyboardEventHandler, type FunctionComponent, type MouseEventHandler } from 'react'
+import React, { useRef, useState, type FunctionComponent, type FocusEventHandler } from 'react'
+// import ContentEditable from 'react-contenteditable'
+import ContentEditable from './ContentEditable.js'
 import Toolbar from './Toolbar.js'
 
 interface Props {
   options?: string[]
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const rgbToHex = (color: string): string => {
-  const digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec(color)
-  if (digits == null) {
-    return ''
-  }
-  const red = parseInt(digits[2])
-  const green = parseInt(digits[3])
-  const blue = parseInt(digits[4])
-  const rgb = blue | (green << 8) | (red << 16)
+export const Editor: FunctionComponent<Props> = ({ options }) => {
+  const [toolstate, setToolstate] = useState(new Map<string, boolean>())
+  const text = useRef('')
+  const d = useRef<HTMLDivElement>(null)
 
-  return digits[1] + '#' + rgb.toString(16).padStart(6, '0')
-}
-
-const Editor: FunctionComponent<Props> = ({ options }) => {
   const execCommand = (commandId: string, value: string): undefined => {
-    document.execCommand(commandId, false, value)
-    // editor.focus() TODO
+    console.log('execCommand', commandId, value, d.current)
+    if (d.current !== null) {
+      d.current.focus()
+      document.execCommand(commandId, false, value)
+    }
   }
 
   // Set default paragraph to <p>
@@ -33,21 +28,24 @@ const Editor: FunctionComponent<Props> = ({ options }) => {
     execCommand(commandId, value)
   }
 
-  const onKeyUpdown: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
-    console.log('onKeyUpdown textarea', e)
+  const handleBlur: FocusEventHandler<HTMLDivElement> = (e) => {
+    console.log('handleBlur', e)
   }
-  const onClick: MouseEventHandler<HTMLTextAreaElement> = (e) => {
-    console.log('onClick textarea', e)
+  const handleChange = (e: any): void => {
+    console.log('handleChange', e.target)
+    const b = document.queryCommandState('bold')
+    if (toolstate.get('bold') !== b) {
+      setToolstate(new Map<string, boolean>([...toolstate, ['bold', b]]))
+    }
+    console.log('bold', )
+    console.log('italic', document.queryCommandState('italic'))
   }
 
   return <>
-    <Toolbar options={options} onChange={onChangeToolbar} />
-    <textarea
+    <Toolbar options={options} state={toolstate} onChange={onChangeToolbar} />
+    <ContentEditable innerRef={d} html={text.current} onBlur={handleBlur} onChange={handleChange}
       className='__editor'
-      contentEditable={true}
-      onKeyDown={onKeyUpdown}
-      onKeyUp={onKeyUpdown}
-      onClick={onClick}
+      onKeyUp={handleChange}
     />
   </>
 }

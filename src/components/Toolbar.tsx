@@ -4,7 +4,6 @@ import {
   faAlignCenter, faAlignLeft, faAlignRight,
   faListOl, faListUl, faIndent, faEraser, faOutdent
 } from '@fortawesome/free-solid-svg-icons'
-import ToggleButton from './ToggleButton.js'
 import Button from './Button.js'
 import Icon from './Icon.js'
 import Select from './Select.js'
@@ -12,6 +11,7 @@ import { Separator } from './Separator.js'
 
 interface Props {
   options?: string[]
+  state: Map<string, boolean>
   onChange: (commandId: string, target: any) => undefined
 }
 
@@ -53,7 +53,7 @@ const fontOptions = [
   { value: 'fantasy', text: 'Fantasy' }
 ]
 
-const Toolbar: FunctionComponent<Props> = ({ options, onChange }: Props) => {
+const Toolbar: FunctionComponent<Props> = ({ options, state, onChange }: Props) => {
   let opt = allOptions
   if (options != null) {
     opt = options
@@ -66,27 +66,27 @@ const Toolbar: FunctionComponent<Props> = ({ options, onChange }: Props) => {
         case 'fontname':
           return <Select key={index} commandId='fontname' title='Font' defaultValue='serif' options={fontOptions} onChange={onChange} />
         case 'bold':
-          return <ToggleButton key={index} commandId='bold' title='Bold' onClick={onChange} ><Icon icon={faBold}/></ToggleButton>
+          return <Button key={index} active={state.get(value)} commandId='bold' title='Bold' onClick={onChange} ><Icon icon={faBold}/></Button>
         case 'italic':
-          return <ToggleButton key={index} commandId='italic' title='Italic' onClick={onChange} ><Icon icon={faItalic}/></ToggleButton>
+          return <Button key={index} active={state.get(value)} commandId='italic' title='Italic' onClick={onChange} ><Icon icon={faItalic}/></Button>
         case 'underline':
-          return <ToggleButton key={index} commandId='underline' title='Underline' onClick={onChange} ><Icon icon={faUnderline}/></ToggleButton>
+          return <Button key={index} active={state.get(value)} commandId='underline' title='Underline' onClick={onChange} ><Icon icon={faUnderline}/></Button>
         case 'justifyleft':
-          return <ToggleButton key={index} commandId='justifyleft' title='Left align' onClick={onChange} ><Icon icon={faAlignLeft}/></ToggleButton>
+          return <Button key={index} active={state.get(value)} commandId='justifyleft' title='Left align' onClick={onChange} ><Icon icon={faAlignLeft}/></Button>
         case 'justifycenter':
-          return <ToggleButton key={index} commandId='justifycenter' title='Center align' onClick={onChange} ><Icon icon={faAlignCenter}/></ToggleButton>
+          return <Button key={index} active={state.get(value)} commandId='justifycenter' title='Center align' onClick={onChange} ><Icon icon={faAlignCenter}/></Button>
         case 'justifyright':
-          return <ToggleButton key={index} commandId='justifyright' title='Right align' onClick={onChange} ><Icon icon={faAlignRight}/></ToggleButton>
+          return <Button key={index} active={state.get(value)} commandId='justifyright' title='Right align' onClick={onChange} ><Icon icon={faAlignRight}/></Button>
         case 'numberlist':
-          return <ToggleButton key={index} commandId='insertorderedlist' title='Numbered list' onClick={onChange} ><Icon icon={faListOl}/></ToggleButton>
+          return <Button key={index} active={state.get(value)} commandId='insertorderedlist' title='Numbered list' onClick={onChange} ><Icon icon={faListOl}/></Button>
         case 'bulletlist':
-          return <ToggleButton key={index} commandId='insertunorderedlist' title='Bulleted list' onClick={onChange} ><Icon icon={faListUl}/></ToggleButton>
+          return <Button key={index} active={state.get(value)} commandId='insertunorderedlist' title='Bulleted list' onClick={onChange} ><Icon icon={faListUl}/></Button>
         case 'indent':
-          return <ToggleButton key={index} commandId='indent' title='Increase indent' onClick={onChange} ><Icon icon={faIndent}/></ToggleButton>
+          return <Button key={index} active={state.get(value)} commandId='indent' title='Increase indent' onClick={onChange} ><Icon icon={faIndent}/></Button>
         case 'outdent':
-          return <ToggleButton key={index} commandId='outdent' title='Decrease indent' onClick={onChange} ><Icon icon={faOutdent}/></ToggleButton>
+          return <Button key={index} active={state.get(value)} commandId='outdent' title='Decrease indent' onClick={onChange} ><Icon icon={faOutdent}/></Button>
         case 'clear':
-          return <Button key={index} commandId='removeFormat' title='Clear formatting' onClick={onChange} ><Icon icon={faEraser}/></Button>
+          return <Button key={index} active={state.get(value)} commandId='removeFormat' title='Clear formatting' onClick={onChange} ><Icon icon={faEraser}/></Button>
         case '|':
           return <Separator key={index} />
         default: return ''
