@@ -1,10 +1,11 @@
 import React, { type KeyboardEventHandler, type FunctionComponent, type MouseEventHandler } from 'react'
-import Toolbar from './Toolbar'
+import Toolbar from './Toolbar.js'
 
 interface Props {
   options?: string[]
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const rgbToHex = (color: string): string => {
   const digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec(color)
   if (digits == null) {
@@ -18,8 +19,7 @@ const rgbToHex = (color: string): string => {
   return digits[1] + '#' + rgb.toString(16).padStart(6, '0')
 }
 
-const Editor: FunctionComponent<Props> = ({ options }) => {
-
+export const Editor: FunctionComponent<Props> = ({ options }) => {
   /*
   const updateActiveState = () => {
     const toolbarSelects = toolbar.querySelectorAll('select[data-command-id]')
@@ -77,4 +77,4 @@ const Editor: FunctionComponent<Props> = ({ options }) => {
   </>
 }
 
-export default Editor
+// export default Editor

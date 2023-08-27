@@ -1,9 +1,9 @@
 import React, { type FunctionComponent } from 'react'
-import Button from './Button'
-import Icon from './Icon'
-import Input from './Input'
-import Select from './Select'
-import { Separator } from './Separator'
+import Button from './Button.js'
+import Icon from './Icon.js'
+import Input from './Input.js'
+import Select from './Select.js'
+import { Separator } from './Separator.js'
 
 interface Props {
   options?: string[]

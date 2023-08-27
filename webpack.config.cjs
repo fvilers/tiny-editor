@@ -21,12 +21,15 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(js|jsx)$/,
+        use: 'babel-loader'
       }
     ]
   },
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './demo',
     hot: true
   },
   mode: 'development'

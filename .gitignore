@@ -39,6 +39,9 @@ jspm_packages/
 # TypeScript v1 declaration files
 typings/
 
+# Typescript translations of React components
+src/components/*.js
+
 # Optional npm cache directory
 .npm
 

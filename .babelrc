@@ -1,10 +1,5 @@
 {
   "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "forceAllTransforms": true
-      }
-    ]
+    "@babel/preset-react"
   ]
 }
