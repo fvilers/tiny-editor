@@ -1,20 +1,12 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
-  plugins: [
-    new CleanWebpackPlugin(['demo']),
-    new HtmlWebpackPlugin({
-      template: 'public/index.html'
-    }),
-    new webpack.HotModuleReplacementPlugin()
-  ],
+  resolve: {
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json']
+  },
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'demo')
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
@@ -31,7 +23,8 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    hot: true
+    hot: true,
+    port: 3000
   },
   mode: 'development'
 };

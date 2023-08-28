@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "rollup -c",
+    "prestart": "npx tsc",
     "start": "webpack-dev-server --open",
     "analyze": "npm run build && source-map-explorer dist/bundle.js",
     "version": "npm run build",
