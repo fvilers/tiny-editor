@@ -5,5 +5,5 @@ import App from './components/App.js'
 const app = document.getElementById('app')
 
 if (app != null) {
-  ReactDOM.createRoot(app).render(App())
+  ReactDOM.createRoot(app).render(App({}))
 }
