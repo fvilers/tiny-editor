@@ -2,15 +2,23 @@ import React, { useRef, useState, type FunctionComponent, type FocusEventHandler
 // import ContentEditable from 'react-contenteditable'
 import ContentEditable from './ContentEditable.js'
 import Toolbar from './Toolbar.js'
+import { defaultTools } from '../config.js'
 
 interface Props {
-  options?: string[]
+  options?: string
+}
+
+function parseTools(tools: string): string[] {
+  return tools.split('|').map(section => ['|', ...section.split(/ +/)]).flat().filter(tool => tool !== '').slice(1)
 }
 
 export const Editor: FunctionComponent<Props> = ({ options }) => {
   const [toolstate, setToolstate] = useState(new Map<string, boolean>())
   const text = useRef('')
   const d = useRef<HTMLDivElement>(null)
+
+  const tools = parseTools(options ?? defaultTools)
+  console.log(tools)
 
   const execCommand = (commandId: string, value: string): undefined => {
     console.log('execCommand', commandId, value, d.current)
@@ -37,12 +45,11 @@ export const Editor: FunctionComponent<Props> = ({ options }) => {
     if (toolstate.get('bold') !== b) {
       setToolstate(new Map<string, boolean>([...toolstate, ['bold', b]]))
     }
-    console.log('bold', )
     console.log('italic', document.queryCommandState('italic'))
   }
 
   return <>
-    <Toolbar options={options} state={toolstate} onChange={onChangeToolbar} />
+    <Toolbar options={tools} state={toolstate} onChange={onChangeToolbar} />
     <ContentEditable innerRef={d} html={text.current} onBlur={handleBlur} onChange={handleChange}
       className='__editor'
       onKeyUp={handleChange}

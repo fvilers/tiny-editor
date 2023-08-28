@@ -69,4 +69,4 @@ export const toolOptions: Record<string, ToolOption> = {
   default: { command: '', tool: '', title: '', icon: faBold }
 }
 
-export const defaultTools = 'blocks font bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | clear'
+export const defaultTools = 'style font bold italic underline | justifyleft justifycenter justifyright | bullist numlist outdent indent | clear'
