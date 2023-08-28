@@ -2,8 +2,12 @@
 docs
 public
 src
-.babelrc
 .gitignore
 .npmignore
-rollup.config.js
-webpack.*.js
+webpack.*.cjs
+CSSStub.js
+tsconfig.json
+eslint.yml
+jest.config.js
+test
+coverage

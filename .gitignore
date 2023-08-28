@@ -65,3 +65,4 @@ src/components/*.js
 
 demo
 dist
+lib

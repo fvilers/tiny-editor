@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "description": "A tiny HTML rich text editor for React",
   "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "pretest": "eslint src",
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
     "test1": "jest",
-    "build": "webpack",
+    "build": "webpack --env prod",
     "start": "webpack-dev-server --open",
     "version": "npm run build",
     "postversion": "git push && git push --tags && npm publish"

@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
-
     "jsx": "react",
     "target": "ESNext",
     "module": "NodeNext",
@@ -9,6 +8,13 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "lib",
+    "outDir": "lib"
+  },
+  "exclude": [
+    "./test"
+  ]
 }
