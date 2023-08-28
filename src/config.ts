@@ -4,25 +4,6 @@ import {
   faListOl, faListUl, faIndent, faEraser, faOutdent, type IconDefinition
 } from '@fortawesome/free-solid-svg-icons'
 
-export const allOptions = [
-  'style',
-  'font',
-  'bold',
-  'italic',
-  'underline',
-  '|',
-  'justifyleft',
-  'justifycenter',
-  'justifyright',
-  '|',
-  'numlist',
-  'bullist',
-  'indent',
-  'outdent',
-  '|',
-  'clear'
-]
-
 export const styleOptions = [
   { value: 'h1', text: 'Title 1' },
   { value: 'h2', text: 'Title 2' },
@@ -42,18 +23,37 @@ export const fontOptions = [
   { value: 'fantasy', text: 'Fantasy' }
 ]
 
-export interface ToolOption {
-  tool: string
+export const webSafeFontOptions = [
+  { value: 'Georgia', text: 'Serif' },
+  { value: 'Verdana', text: 'Sans Serif' },
+  { value: 'Courier New', text: 'Monospace' },
+  { value: 'Brush Script MT', text: 'Cursive' }
+]
+
+export interface SeparatorToolOption {
+  tool: 'separator'
+}
+
+export interface ButtonToolOption {
+  tool: 'button'
   title: string
-  command?: string
-  options?: Array<{ value: string, text: string }>
-  defaultValue?: string
+  command: string
   icon?: IconDefinition
 }
 
+export interface SelectToolOption {
+  tool: 'select'
+  title: string
+  command: string
+  options?: Array<{ value: string, text: string }>
+  defaultValue?: string
+}
+
+type ToolOption = ButtonToolOption | SelectToolOption | SeparatorToolOption
+
 export const toolOptions: Record<string, ToolOption> = {
-  style: { command: 'formatblock', tool: 'select', title: 'Styles', options: styleOptions, defaultValue: 'p' },
-  font: { command: 'fontname', tool: 'select', title: 'Font', options: fontOptions, defaultValue: 'serif' },
+  style: { command: 'formatBlock', tool: 'select', title: 'Styles', options: styleOptions, defaultValue: 'p' },
+  font: { command: 'fontName', tool: 'select', title: 'Font', options: fontOptions, defaultValue: 'serif' },
   bold: { command: 'bold', tool: 'button', title: 'Bold', icon: faBold },
   italic: { command: 'italic', tool: 'button', title: 'Italic', icon: faItalic },
   underline: { command: 'underline', tool: 'button', title: 'Underline', icon: faUnderline },
@@ -65,8 +65,7 @@ export const toolOptions: Record<string, ToolOption> = {
   indent: { command: 'indent', tool: 'button', title: 'Increase indent', icon: faIndent },
   outdent: { command: 'outdent', tool: 'button', title: 'Decrease indent', icon: faOutdent },
   clear: { command: 'removeFormat', tool: 'button', title: 'Clear formatting', icon: faEraser },
-  '|': { tool: 'separator', title: 'separator' },
-  default: { command: '', tool: '', title: '', icon: faBold }
+  '|': { tool: 'separator' }
 }
 
 export const defaultTools = 'style font bold italic underline | justifyleft justifycenter justifyright | bullist numlist outdent indent | clear'

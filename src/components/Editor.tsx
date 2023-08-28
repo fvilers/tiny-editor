@@ -11,12 +11,12 @@ interface Props {
   onChange?: (html: string) => void
 }
 
-function parseTools(tools: string): string[] {
+function parseTools (tools: string): string[] {
   return tools.split('|').map(section => ['|', ...section.split(/ +/)]).flat().filter(tool => tool !== '').slice(1)
 }
 
 export const Editor: FunctionComponent<Props> = ({ options, html, onBlur, onChange }) => {
-  const [toolstate, setToolstate] = useState(new Map<string, boolean>())
+  const [toolstate, setToolstate] = useState(new Map<string, boolean | string>())
   const text = useRef(html ?? '')
   const d = useRef<HTMLDivElement>(null)
   const isFirstRender = useRef<boolean>(true)
@@ -24,9 +24,9 @@ export const Editor: FunctionComponent<Props> = ({ options, html, onBlur, onChan
   const tools = parseTools(options ?? defaultTools)
 
   const execCommand = (commandId: string, value: string): undefined => {
-    console.log('execCommand', commandId, value, d.current)
     if (d.current !== null) {
       d.current.focus()
+      console.log('execCommand', commandId, value)
       document.execCommand(commandId, false, value)
     }
   }
@@ -42,15 +42,33 @@ export const Editor: FunctionComponent<Props> = ({ options, html, onBlur, onChan
   }
 
   const updateToolbar = (): void => {
-    tools.forEach(tool => {
-      const command = toolOptions[tool].command
-      if (command != null) {
-        const cs = document.queryCommandState(command)
-        const current = toolstate.get(tool) ?? false
-        // console.log('toolbar', tool, cs, current)
-        if (current !== cs) {
-          setToolstate(new Map<string, boolean>([...toolstate, [tool, cs]]))
-        }
+    tools.forEach(item => {
+      const opt = toolOptions[item]
+      switch (opt.tool) {
+        case 'select':
+          {
+            const { command } = opt
+            const cv = document.queryCommandValue(command)
+            const current = toolstate.get(item) ?? ''
+            console.log('toolbar', item, command, cv, current)
+            if (current !== cv) {
+              setToolstate(new Map<string, boolean | string>([...toolstate, [item, cv]]))
+            }
+          }
+          break
+        case 'button':
+          {
+            const { command } = opt
+            const cs = document.queryCommandState(command)
+            const current = toolstate.get(item) ?? false
+            console.log('toolbar', item, command, cs, current, [...toolstate])
+            if (current !== cs) {
+              setToolstate(new Map<string, boolean | string>([...toolstate, [item, cs]]))
+            }
+          }
+          break
+        default:
+          console.log('unknown tool', opt.tool)
       }
     })
   }
