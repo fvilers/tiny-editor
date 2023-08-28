@@ -1,8 +1,13 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   resolve: {
-    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json']
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
+    extensionAlias: {
+      '.js': ['.js', '.ts', '.tsx'],
+      '.cjs': ['.cjs', '.cts'],
+      '.mjs': ['.mjs', '.mts']
+    }
   },
   output: {
     filename: 'bundle.js',
@@ -27,4 +32,4 @@ module.exports = {
     port: 3000
   },
   mode: 'development'
-};
+}

@@ -4,9 +4,7 @@
   "description": "A tiny HTML rich text editor for React",
   "type": "module",
   "scripts": {
-    "prebuild": "tsc",
     "build": "webpack",
-    "prestart": "tsc",
     "start": "webpack-dev-server --open",
     "analyze": "npm run build && source-map-explorer dist/bundle.js",
     "version": "npm run build",
