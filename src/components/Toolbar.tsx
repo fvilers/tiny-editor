@@ -15,11 +15,9 @@ const Toolbar: FunctionComponent<Props> = ({ options, state, onChange }: Props) 
   if (options != null) {
     opt = options
   }
-  console.log('Toolbar', options)
   return <div className='__toolbar'>{
     opt.map((value: string, index) => {
       const { tool, title, options, icon, defaultValue } = toolOptions[value]
-      console.log('Toolbar', tool)
       switch (tool) {
         case 'select':
           return <Select key={index} title={title} defaultValue={defaultValue ?? ''} options={options ?? []} onChange={onChange} />
