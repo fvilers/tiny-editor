@@ -39,3 +39,10 @@ export default function App() {
 
 ### Options
 
+  The toolbar can be customised. The default toolbar is:
+
+    style font bold italic underline | justifyleft justifycenter justifyright | bullist numlist outdent indent | clear
+
+  Pass a string to the options property of the editor to re-order or omit some tool items or to add/remove separators
+
+  You can also pass an onBlur callback to the editor.
