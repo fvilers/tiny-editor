@@ -7,7 +7,7 @@ import { allOptions, toolOptions } from '../config.js'
 interface Props {
   options?: string[]
   state: Map<string, boolean>
-  onChange: (commandId: string, target: any) => undefined
+  onChange: (commandId: string, value: string) => undefined
 }
 
 const Toolbar: FunctionComponent<Props> = ({ options, state, onChange }: Props) => {
@@ -17,12 +17,20 @@ const Toolbar: FunctionComponent<Props> = ({ options, state, onChange }: Props) 
   }
   return <div className='__toolbar'>{
     opt.map((value: string, index) => {
-      const { tool, title, options, icon, defaultValue } = toolOptions[value]
+      const { tool, title, options, icon, defaultValue, command } = toolOptions[value]
       switch (tool) {
         case 'select':
-          return <Select key={index} title={title} defaultValue={defaultValue ?? ''} options={options ?? []} onChange={onChange} />
+          return <Select
+            key={index} title={title}
+            defaultValue={defaultValue ?? ''} options={options ?? []}
+            onChange={(value) => { onChange(command ?? '', value) }}
+          />
         case 'button':
-          return <Button key={index} active={state.get(value)} title={title} icon={icon} onClick={onChange} />
+          return <Button
+            key={index} title={title}
+            active={state.get(value)} icon={icon}
+            onClick={() => { onChange(command ?? '', '') }}
+          />
         case 'separator':
           return <Separator key={index} />
         default: return ''

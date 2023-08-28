@@ -104,9 +104,7 @@ const ContentEditable: FC<Props> = memo(SimpleContentEditable)
 export default ContentEditable
 
 /*
-not working 
-
-
+not working
   if (tagName == null) {
     return <div ref={ref}
     {...props}

@@ -8,13 +8,14 @@ interface OptionProps {
 interface SelectProps {
   title: string
   options: OptionProps[]
-  onChange: (commandId: string, target: any) => undefined
+  onChange: (value: string) => undefined
   defaultValue: string
 }
 
 const Select: FunctionComponent<SelectProps> = ({ title, options, onChange, defaultValue }) => {
   const handleChange: ChangeEventHandler<HTMLSelectElement> = (e) => {
-    onChange(title, e.target.value)
+    console.log('select change', e.target.value)
+    onChange(e.target.value)
   }
 
   return <select defaultValue={defaultValue} title={title} className='__toolbar-item' onChange={handleChange}>{
