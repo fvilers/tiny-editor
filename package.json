@@ -30,9 +30,9 @@
     "url": "https://github.com/jcable/react-tiny-editor/issues"
   },
   "devDependencies": {
-    "@jest/globals": "^29.6.4",
-    "@types/jest": "^29.5.4",
-    "@types/react": "^18.2.21",
+    "@testing-library/jest-dom": "^6.1.2",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/sanitize-html": "^2.9.0",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "css-loader": "6.7.3",
@@ -43,6 +43,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.33.2",
     "jest": "^29.6.4",
+    "jest-environment-jsdom": "^29.6.4",
     "load-styles": "^2.0.0",
     "style-loader": "3.3.1",
     "ts-jest": "^29.1.1",
@@ -57,6 +58,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@types/user-event": "^4.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sanitize-html": "^2.11.0"

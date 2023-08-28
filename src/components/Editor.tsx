@@ -16,21 +16,34 @@ function parseTools (tools: string): string[] {
   return tools.split('|').map(section => ['|', ...section.split(/ +/)]).flat().filter(tool => tool !== '').slice(1)
 }
 
-export const Editor: FunctionComponent<Props> = ({ options, html, onBlur, onChange }) => {
-  const [toolstate, setToolstate] = useState(new Map<string, boolean | string>())
-  const text = useRef(sanitizeHtml(html ?? '', {
+export function todiv (html: string): string {
+  return sanitizeHtml(html, {
     transformTags: {
       strong: 'b',
       em: 'i'
     }
-  }))
+  })
+}
+
+export function fromdiv (html: string): string {
+  return sanitizeHtml(html, {
+    transformTags: {
+      b: 'strong',
+      i: 'em'
+    }
+  })
+}
+
+const Editor: FunctionComponent<Props> = ({ options, html, onBlur, onChange }) => {
+  const [toolstate, setToolstate] = useState(new Map<string, boolean | string>())
+  const text = useRef(todiv(html ?? ''))
   const d = useRef<HTMLDivElement>(null)
   const isFirstRender = useRef<boolean>(true)
 
   const tools = parseTools(options ?? defaultTools)
 
   const onChangeToolbar = (commandId: string, value: string): undefined => {
-    // console.log('onChangeToolbar', commandId, value)
+    console.log('onChangeToolbar', commandId, value, d.current)
     if (d.current !== null) {
       d.current.focus()
       console.log('execCommand', commandId, value)
@@ -52,7 +65,7 @@ export const Editor: FunctionComponent<Props> = ({ options, html, onBlur, onChan
             const { command } = opt
             const cv = queryCommandValue(command)
             const current = toolstate.get(item) ?? ''
-            console.log('toolbar', item, command, cv, current)
+            // console.log('toolbar', item, command, cv, current)
             if (current !== cv) {
               setToolstate(new Map<string, boolean | string>([...toolstate, [item, cv]]))
             }
@@ -63,7 +76,7 @@ export const Editor: FunctionComponent<Props> = ({ options, html, onBlur, onChan
             const { command } = opt
             const cs = queryCommandState(command)
             const current = toolstate.get(item) ?? false
-            console.log('toolbar', item, command, cs, current, [...toolstate])
+            // console.log('toolbar', item, command, cs, current, [...toolstate])
             if (current !== cs) {
               setToolstate(new Map<string, boolean | string>([...toolstate, [item, cs]]))
             }
@@ -88,12 +101,7 @@ export const Editor: FunctionComponent<Props> = ({ options, html, onBlur, onChan
   const handleChange = (e: any): void => {
     updateToolbar()
     if (onChange != null) {
-      onChange(sanitizeHtml(e.target.value, {
-        transformTags: {
-          b: 'strong',
-          i: 'em'
-        }
-      }))
+      onChange(fromdiv(e.target.value))
     }
   }
 

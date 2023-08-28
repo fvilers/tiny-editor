@@ -1,20 +1,19 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 const config = {
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   collectCoverage: true,
+  coverageDirectory: '<rootDir>/coverage',
   collectCoverageFrom: ['./src/**'],
   coverageThreshold: {
     global: {
-      lines: 3
-    }
-  },
-  globals: {
-    'ts-jest': {
-      useESM: true
+      lines: 75
     }
   },
   moduleNameMapper: {
-    '(.+)\\.js': '$1'
+    // the next line fixed a problem where a library is using explicit extensions
+    'entities/lib/decode.js': 'entities/lib/decode.js',
+    '(.+)\\.js': '$1',
+    'index.css': '<rootDir>/CSSStub.js'
   },
   extensionsToTreatAsEsm: [
     '.ts', '.tsx'

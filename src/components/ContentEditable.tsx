@@ -15,7 +15,7 @@ export interface Props extends DivProps {
   innerRef?: RefObject<HTMLElement> | RefCallback<HTMLElement>
 }
 
-function replaceCaret (el: HTMLElement): undefined {
+export function replaceCaret (el: HTMLElement): undefined {
   // Place the caret at the end of the element
   const target = document.createTextNode('')
   el.appendChild(target)

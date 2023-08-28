@@ -1,7 +1,7 @@
 import React, { type FunctionComponent } from 'react'
 import Button from './Button.js'
 import Select from './Select.js'
-import { Separator } from './Separator.js'
+import Separator from './Separator.js'
 import { toolOptions } from '../config.js'
 
 interface Props {

@@ -3,4 +3,3 @@ export const execCommand = (command: string, showUI?: boolean, value?: string): 
 export const queryCommandState = (command: string): boolean => document.queryCommandState(command)
 
 export const queryCommandValue = (command: string): string => document.queryCommandValue(command)
-
