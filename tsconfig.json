@@ -5,6 +5,7 @@
     "jsx": "react",
     "target": "ESNext",
     "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

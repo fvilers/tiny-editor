@@ -10,3 +10,6 @@ parserOptions:
 plugins:
   - react
 rules: {}
+settings:
+  react:
+    version: detect
