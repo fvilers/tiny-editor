@@ -1,5 +1,4 @@
 import React, { memo, useEffect, type FC, type CSSProperties, type RefCallback, type RefObject } from 'react'
-import deepEqual from 'fast-deep-equal'
 
 export type ContentEditableEvent = React.SyntheticEvent<any, Event> & { target: { value: string } }
 
@@ -14,10 +13,6 @@ export interface Props extends DivProps {
   className?: string
   style?: CSSProperties
   innerRef?: RefObject<HTMLElement> | RefCallback<HTMLElement>
-}
-
-function normalizeHtml (str: string): string {
-  return str?.replace(/&nbsp;|\u202F|\u00A0/g, ' ').replace(/<br \/>/g, '<br>')
 }
 
 function replaceCaret (el: HTMLElement): undefined {
@@ -46,7 +41,6 @@ function replaceCaret (el: HTMLElement): undefined {
  */
 const SimpleContentEditable: FC<Props> = ({ tagName, html, innerRef, tabIndex, children, ...props }) => {
   let lastHtml: string = html
-  console.log('SimpleContentEditable', lastHtml, html)
   const el: any = typeof innerRef === 'function' ? { current: null } : React.createRef<HTMLElement>()
 
   const getEl = (): HTMLElement => (innerRef != null && typeof innerRef !== 'function' ? innerRef : el).current
@@ -93,6 +87,25 @@ const SimpleContentEditable: FC<Props> = ({ tagName, html, innerRef, tabIndex, c
   } else {
     ref = el
   }
+  return <div ref={ref}
+  {...props}
+   onInput={emitChange}
+   onBlur={props.onBlur ?? emitChange}
+   onKeyUp={props.onKeyUp ?? emitChange}
+   onKeyDown={props.onKeyDown ?? emitChange}
+   contentEditable={true}
+   dangerouslySetInnerHTML={{ __html: html }}
+  >
+  </div>
+}
+
+const ContentEditable: FC<Props> = memo(SimpleContentEditable)
+
+export default ContentEditable
+
+/*
+not working 
+
 
   if (tagName == null) {
     return <div ref={ref}
@@ -106,56 +119,24 @@ const SimpleContentEditable: FC<Props> = ({ tagName, html, innerRef, tabIndex, c
     >
     </div>
   }
-  if (children != null) {
-    console.log('CHILDREN set - why?', children)
+  const options = {
+    ...props,
+    ref,
+    onInput: emitChange,
+    onBlur: props.onBlur ?? emitChange,
+    onKeyUp: props.onKeyUp ?? emitChange,
+    onKeyDown: props.onKeyDown ?? emitChange,
+    contentEditable: props.disabled === false,
   }
-  return React.createElement(
-    tagName,
-    {
-      ...props,
-      ref,
-      onInput: emitChange,
-      onBlur: props.onBlur ?? emitChange,
-      onKeyUp: props.onKeyUp ?? emitChange,
-      onKeyDown: props.onKeyDown ?? emitChange,
-      contentEditable: props.disabled === false,
-      dangerouslySetInnerHTML: { __html: html }
-    })
+  if (children != null && html != null) {
+    console.log('CHILDREN and HTML set - why?', children, html)
+  } else if (children != null) {
+    return React.createElement(tagName, options, children)
+  }
+  if (html != null) {
+    options.dangerouslySetInnerHTML = { __html: html }
+  }
+  return React.createElement(tagName, options)
 }
 
-function relevantPropsEqual (props: Props, nextProps: Props): boolean {
-  // We need not rerender if the change of props simply reflects the user's edits.
-  // Rerendering in this case would make the cursor/caret jump
-
-  // Rerender if there is no element yet... (somehow?)
-  // if (!incoming.innerRef?.current) {
-  //    return false;
-  // }
-
-  if (normalizeHtml(nextProps.html) !== normalizeHtml(props.html)) {
-    return false
-  }
-  if (props.disabled !== nextProps.disabled) {
-    return false
-  }
-  if (props.tagName !== nextProps.tagName) {
-    return false
-  }
-  if (props.className !== nextProps.className) {
-    return false
-  }
-  if (props.innerRef !== nextProps.innerRef) {
-    return false
-  }
-  if (props.placeholder !== nextProps.placeholder) {
-    return false
-  }
-  if (deepEqual(props.style, nextProps.style)) {
-    return false
-  }
-  return true
-}
-
-const ContentEditable: FC<Props> = memo(SimpleContentEditable, relevantPropsEqual)
-
-export default ContentEditable
+*/
