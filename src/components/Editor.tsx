@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState, type FunctionComponent, type FocusEventHandler } from 'react'
-// import ContentEditable from 'react-contenteditable'
+import sanitizeHtml from 'sanitize-html'
 import ContentEditable from './ContentEditable.js'
 import Toolbar from './Toolbar.js'
 import { defaultTools, toolOptions } from '../config.js'
+import { execCommand, queryCommandState, queryCommandValue } from '../deprecated.js'
 
 interface Props {
   options?: string
@@ -17,23 +18,24 @@ function parseTools (tools: string): string[] {
 
 export const Editor: FunctionComponent<Props> = ({ options, html, onBlur, onChange }) => {
   const [toolstate, setToolstate] = useState(new Map<string, boolean | string>())
-  const text = useRef(html ?? '')
+  const text = useRef(sanitizeHtml(html ?? '', {
+    transformTags: {
+      strong: 'b',
+      em: 'i'
+    }
+  }))
   const d = useRef<HTMLDivElement>(null)
   const isFirstRender = useRef<boolean>(true)
 
   const tools = parseTools(options ?? defaultTools)
 
-  const execCommand = (commandId: string, value: string): undefined => {
+  const onChangeToolbar = (commandId: string, value: string): undefined => {
+    // console.log('onChangeToolbar', commandId, value)
     if (d.current !== null) {
       d.current.focus()
       console.log('execCommand', commandId, value)
-      document.execCommand(commandId, false, value)
+      execCommand(commandId, false, value)
     }
-  }
-
-  const onChangeToolbar = (commandId: string, value: string): undefined => {
-    console.log('onChangeToolbar', commandId, value)
-    execCommand(commandId, value)
   }
 
   const handleBlur: FocusEventHandler<HTMLDivElement> = (e) => {
@@ -48,7 +50,7 @@ export const Editor: FunctionComponent<Props> = ({ options, html, onBlur, onChan
         case 'select':
           {
             const { command } = opt
-            const cv = document.queryCommandValue(command)
+            const cv = queryCommandValue(command)
             const current = toolstate.get(item) ?? ''
             console.log('toolbar', item, command, cv, current)
             if (current !== cv) {
@@ -59,7 +61,7 @@ export const Editor: FunctionComponent<Props> = ({ options, html, onBlur, onChan
         case 'button':
           {
             const { command } = opt
-            const cs = document.queryCommandState(command)
+            const cs = queryCommandState(command)
             const current = toolstate.get(item) ?? false
             console.log('toolbar', item, command, cs, current, [...toolstate])
             if (current !== cs) {
@@ -85,14 +87,21 @@ export const Editor: FunctionComponent<Props> = ({ options, html, onBlur, onChan
 
   const handleChange = (e: any): void => {
     updateToolbar()
-    if (onChange != null) onChange(e.target.value)
+    if (onChange != null) {
+      onChange(sanitizeHtml(e.target.value, {
+        transformTags: {
+          b: 'strong',
+          i: 'em'
+        }
+      }))
+    }
   }
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (isFirstRender.current) {
       // Set default paragraph to <p>
-      execCommand('defaultParagraphSeparator', 'p')
+      execCommand('defaultParagraphSeparator', false, 'p')
     }
     isFirstRender.current = false
     return () => { isFirstRender.current = true }
