@@ -1,4 +1,4 @@
-# tiny-editor
+# react-tiny-editor
 
 A tiny HTML rich text editor for React, based on Fabian Vilers tiny-editor and Ophir Lojkine's react-contenteditable.
 
