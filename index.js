@@ -1,1 +1,1 @@
-module.exports = require('./dist/bundle.js');
+module.exports = require('./lib/Editor.js');

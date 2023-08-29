@@ -11,3 +11,8 @@ eslint.yml
 jest.config.js
 test
 coverage
+demo
+.eslintrc.yml
+.github
+.github/FUNDING.yml
+n

@@ -1,17 +1,16 @@
 {
   "name": "@ogauk/react-tiny-editor",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A tiny HTML rich text editor for React",
   "type": "module",
-  "main": "lib/index.js",
+  "main": "index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "pretest": "eslint src",
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
     "test1": "jest",
-    "build": "tsc",
+    "build": "tsc && cp src/index.css lib",
     "start": "webpack-dev-server --env dev --open",
-    "version": "npm run build",
     "postversion": "git push && git push --tags && npm publish"
   },
   "repository": {
