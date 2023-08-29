@@ -16,7 +16,7 @@ npm install @ogauk/react-tiny-editor
 
 ```
 import React, { type FC } from 'react'
-import Editor from './Editor.js'
+import Editor from '@ogauk/react-tiny-editor/lib/Editor'
 
 const App: FC<null> = () => {
   return <Editor html='A <b>test</b> message' onChange={(html) => { console.log('app on change', html) }}/>
@@ -25,12 +25,11 @@ const App: FC<null> = () => {
 export default App
 ```
 
-
 ## How to use (Javascript)
 
 ```
 import React from 'react'
-import Editor from './Editor.js'
+import Editor from '@ogauk/react-tiny-editor/lib/Editor'
 
 export default function App() {
   return <Editor html='A <b>test</b> message' onChange={(html) => { console.log('app on change', html) }}/>

@@ -1,6 +1,6 @@
 {
   "name": "@ogauk/react-tiny-editor",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A tiny HTML rich text editor for React",
   "type": "module",
   "main": "index.js",
