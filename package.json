@@ -9,8 +9,8 @@
     "pretest": "eslint src",
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
     "test1": "jest",
-    "build": "webpack --env prod",
-    "start": "webpack-dev-server --open",
+    "build": "tsc",
+    "start": "webpack-dev-server --env dev --open",
     "version": "npm run build",
     "postversion": "git push && git push --tags && npm publish"
   },
