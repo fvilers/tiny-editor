@@ -2,7 +2,7 @@ import React from 'react'
 import { test, expect } from '@jest/globals'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Toolbar from '../src/components/Toolbar.js'
+import Toolbar from '../src/Toolbar.js'
 
 const s = new Map<string, string | boolean>()
 

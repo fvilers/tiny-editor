@@ -4,7 +4,7 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { faBold } from '@fortawesome/free-solid-svg-icons'
 
-import Button from '../src/components/Button.js'
+import Button from '../src/Button.js'
 
 test('button renders', () => {
   // ARRANGE

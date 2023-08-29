@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState, type FunctionComponent, type FocusE
 import sanitizeHtml from 'sanitize-html'
 import ContentEditable from './ContentEditable.js'
 import Toolbar from './Toolbar.js'
-import { defaultTools, toolOptions } from '../config.js'
-import { execCommand, queryCommandState, queryCommandValue } from '../deprecated.js'
+import { defaultTools, toolOptions } from './config.js'
+import { execCommand, queryCommandState, queryCommandValue } from './deprecated.js'
+import './index.css'
 
 interface Props {
   options?: string

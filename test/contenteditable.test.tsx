@@ -2,7 +2,7 @@ import React from 'react'
 import { test, expect } from '@jest/globals'
 import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import ContentEditable, { replaceCaret } from '../src/components/ContentEditable.js'
+import ContentEditable, { replaceCaret } from '../src/ContentEditable.js'
 
 test('content editable renders', () => {
   render(<ContentEditable html='Hello' onChange={() => { console.log('test') } }/>)

@@ -2,7 +2,7 @@ import React from 'react'
 import { jest, test, expect } from '@jest/globals'
 import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Editor from '../src/components/Editor.js'
+import Editor from '../src/Editor.js'
 
 global.document.execCommand = jest.fn<() => boolean>()
 global.document.queryCommandState = jest.fn<() => boolean>()
