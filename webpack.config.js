@@ -1,33 +1,32 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   plugins: [
-    new CleanWebpackPlugin(['demo']),
+    new CleanWebpackPlugin(["demo"]),
     new HtmlWebpackPlugin({
-      template: 'public/index.html'
+      template: "public/index.html",
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ],
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'demo')
+    filename: "main.js",
+    path: path.resolve(__dirname, "demo"),
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   devServer: {
-    contentBase: './demo',
-    hot: true
+    hot: true,
   },
-  mode: 'development'
+  mode: "development",
 };
