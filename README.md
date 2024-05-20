@@ -72,6 +72,7 @@ For example, you can remove the bold format button using the following attribute
 - `data-outdent="no"`: remove the decrease indent button
 - `data-indent="no"`: remove the increase indent button
 - `data-remove-format="no"`: remove the clear formatting button
+- `data-autofocus="no"`: remove autofocus from the editor
 
 ## Supported browsers
 

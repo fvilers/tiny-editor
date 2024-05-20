@@ -1,38 +1,36 @@
-import { createSelect } from './select';
-import { createButton } from './button';
-import { createIcon } from './icon';
-import { createInput } from './input';
-import { BEFORE_END } from './constants';
-
-const NO = 'no';
+import { createButton } from "./button";
+import { BEFORE_END, NO } from "./constants";
+import { createIcon } from "./icon";
+import { createInput } from "./input";
+import { createSelect } from "./select";
 
 const createSeparator = () => {
-  const separator = document.createElement('span');
-  separator.className = '__toolbar-separator';
+  const separator = document.createElement("span");
+  separator.className = "__toolbar-separator";
 
   return separator;
 };
 
 export const createToolbar = (options, execCommand) => {
-  const toolbar = document.createElement('div');
-  toolbar.className = '__toolbar';
+  const toolbar = document.createElement("div");
+  toolbar.className = "__toolbar";
 
   // Styles
   if (options.formatblock !== NO) {
     toolbar.insertAdjacentElement(
       BEFORE_END,
       createSelect(
-        'formatblock',
-        'Styles',
+        "formatblock",
+        "Styles",
         [
-          { value: 'h1', text: 'Title 1' },
-          { value: 'h2', text: 'Title 2' },
-          { value: 'h3', text: 'Title 3' },
-          { value: 'h4', text: 'Title 4' },
-          { value: 'h5', text: 'Title 5' },
-          { value: 'h6', text: 'Title 6' },
-          { value: 'p', text: 'Paragraph', selected: true },
-          { value: 'pre', text: 'Preformatted' }
+          { value: "h1", text: "Title 1" },
+          { value: "h2", text: "Title 2" },
+          { value: "h3", text: "Title 3" },
+          { value: "h4", text: "Title 4" },
+          { value: "h5", text: "Title 5" },
+          { value: "h6", text: "Title 6" },
+          { value: "p", text: "Paragraph", selected: true },
+          { value: "pre", text: "Preformatted" },
         ],
         execCommand
       )
@@ -44,14 +42,14 @@ export const createToolbar = (options, execCommand) => {
     toolbar.insertAdjacentElement(
       BEFORE_END,
       createSelect(
-        'fontname',
-        'Font',
+        "fontname",
+        "Font",
         [
-          { value: 'serif', text: 'Serif', selected: true },
-          { value: 'sans-serif', text: 'Sans Serif' },
-          { value: 'monospace', text: 'Monospace' },
-          { value: 'cursive', text: 'Cursive' },
-          { value: 'fantasy', text: 'Fantasy' }
+          { value: "serif", text: "Serif", selected: true },
+          { value: "sans-serif", text: "Sans Serif" },
+          { value: "monospace", text: "Monospace" },
+          { value: "cursive", text: "Cursive" },
+          { value: "fantasy", text: "Fantasy" },
         ],
         execCommand
       )
@@ -62,7 +60,7 @@ export const createToolbar = (options, execCommand) => {
   if (options.bold !== NO) {
     toolbar.insertAdjacentElement(
       BEFORE_END,
-      createButton('bold', 'Bold', createIcon('tes te-bold'), execCommand)
+      createButton("bold", "Bold", createIcon("tes te-bold"), execCommand)
     );
   }
 
@@ -70,7 +68,7 @@ export const createToolbar = (options, execCommand) => {
   if (options.italic !== NO) {
     toolbar.insertAdjacentElement(
       BEFORE_END,
-      createButton('italic', 'Italic', createIcon('tes te-italic'), execCommand)
+      createButton("italic", "Italic", createIcon("tes te-italic"), execCommand)
     );
   }
 
@@ -79,9 +77,9 @@ export const createToolbar = (options, execCommand) => {
     toolbar.insertAdjacentElement(
       BEFORE_END,
       createButton(
-        'underline',
-        'Underline',
-        createIcon('tes te-underline'),
+        "underline",
+        "Underline",
+        createIcon("tes te-underline"),
         execCommand
       )
     );
@@ -91,7 +89,7 @@ export const createToolbar = (options, execCommand) => {
   if (options.forecolor !== NO) {
     toolbar.insertAdjacentElement(
       BEFORE_END,
-      createInput('forecolor', 'Text color', 'color', execCommand)
+      createInput("forecolor", "Text color", "color", execCommand)
     );
   }
 
@@ -103,9 +101,9 @@ export const createToolbar = (options, execCommand) => {
     toolbar.insertAdjacentElement(
       BEFORE_END,
       createButton(
-        'justifyleft',
-        'Left align',
-        createIcon('tes te-align-left'),
+        "justifyleft",
+        "Left align",
+        createIcon("tes te-align-left"),
         execCommand
       )
     );
@@ -116,9 +114,9 @@ export const createToolbar = (options, execCommand) => {
     toolbar.insertAdjacentElement(
       BEFORE_END,
       createButton(
-        'justifycenter',
-        'Center align',
-        createIcon('tes te-align-center'),
+        "justifycenter",
+        "Center align",
+        createIcon("tes te-align-center"),
         execCommand
       )
     );
@@ -129,9 +127,9 @@ export const createToolbar = (options, execCommand) => {
     toolbar.insertAdjacentElement(
       BEFORE_END,
       createButton(
-        'justifyright',
-        'Right align',
-        createIcon('tes te-align-right'),
+        "justifyright",
+        "Right align",
+        createIcon("tes te-align-right"),
         execCommand
       )
     );
@@ -145,9 +143,9 @@ export const createToolbar = (options, execCommand) => {
     toolbar.insertAdjacentElement(
       BEFORE_END,
       createButton(
-        'insertorderedlist',
-        'Numbered list',
-        createIcon('tes te-list-ol'),
+        "insertorderedlist",
+        "Numbered list",
+        createIcon("tes te-list-ol"),
         execCommand
       )
     );
@@ -158,9 +156,9 @@ export const createToolbar = (options, execCommand) => {
     toolbar.insertAdjacentElement(
       BEFORE_END,
       createButton(
-        'insertunorderedlist',
-        'Bulleted list',
-        createIcon('tes te-list-ul'),
+        "insertunorderedlist",
+        "Bulleted list",
+        createIcon("tes te-list-ul"),
         execCommand
       )
     );
@@ -171,9 +169,9 @@ export const createToolbar = (options, execCommand) => {
     toolbar.insertAdjacentElement(
       BEFORE_END,
       createButton(
-        'outdent',
-        'Decrease indent',
-        createIcon('tes te-indent fa-flip-horizontal'),
+        "outdent",
+        "Decrease indent",
+        createIcon("tes te-indent fa-flip-horizontal"),
         execCommand
       )
     );
@@ -184,9 +182,9 @@ export const createToolbar = (options, execCommand) => {
     toolbar.insertAdjacentElement(
       BEFORE_END,
       createButton(
-        'indent',
-        'Increase indent',
-        createIcon('tes te-indent'),
+        "indent",
+        "Increase indent",
+        createIcon("tes te-indent"),
         execCommand
       )
     );
@@ -200,9 +198,9 @@ export const createToolbar = (options, execCommand) => {
     toolbar.insertAdjacentElement(
       BEFORE_END,
       createButton(
-        'removeFormat',
-        'Clear formatting',
-        createIcon('tes te-eraser'),
+        "removeFormat",
+        "Clear formatting",
+        createIcon("tes te-eraser"),
         execCommand
       )
     );
