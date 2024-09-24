@@ -36,7 +36,7 @@
     "css-loader": "6.7.3",
     "html-webpack-plugin": "5.5.0",
     "load-styles": "^2.0.0",
-    "rollup": "^0.66.2",
+    "rollup": "^3.29.5",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-uglify": "^6.0.4",
