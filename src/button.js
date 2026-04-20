@@ -7,6 +7,11 @@ export const createButton = (commandId, title, children, execCommand) => {
   button.title = title;
   button.type = "button";
   button.insertAdjacentElement(BEFORE_END, children);
+  
+  button.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+  });
+  
   button.addEventListener("click", () => execCommand(commandId));
 
   return button;
