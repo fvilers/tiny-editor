@@ -71,6 +71,9 @@ export class InlineFormatCommand extends Command {
 
   applyTagToNode(textNode) {
     const parent = textNode.parentNode;
+    if (!parent) {
+      return;
+    }
     const wrapper = document.createElement(this.tagName);
     parent.replaceChild(wrapper, textNode);
     wrapper.appendChild(textNode);
@@ -90,6 +93,10 @@ export class InlineFormatCommand extends Command {
   applyStyleToNode(textNode) {
     const parent = DOMUtils.getParentElement(textNode);
     
+    if (!textNode.parentNode) {
+      return;
+    }
+    
     if (parent.tagName.toLowerCase() === 'span' && 
         parent.getAttribute('style')) {
       parent.style[this.styleProperty] = this.styleValue;
@@ -97,8 +104,10 @@ export class InlineFormatCommand extends Command {
       const span = document.createElement('span');
       span.style[this.styleProperty] = this.styleValue;
       const textNodeParent = textNode.parentNode;
-      textNodeParent.replaceChild(span, textNode);
-      span.appendChild(textNode);
+      if (textNodeParent) {
+        textNodeParent.replaceChild(span, textNode);
+        span.appendChild(textNode);
+      }
     }
   }
 

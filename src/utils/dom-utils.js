@@ -192,19 +192,36 @@ export class DOMUtils {
     let newStartOffset = startOffset;
     let newEndOffset = endOffset;
 
+    const isSameContainer = startContainer === endContainer;
+
     if (this.isTextNode(startContainer) && startOffset > 0) {
       newStartContainer = this.splitTextNode(startContainer, startOffset);
       newStartOffset = 0;
+      
+      if (isSameContainer) {
+        newEndContainer = newStartContainer;
+        newEndOffset = endOffset - startOffset;
+      }
     }
 
-    if (this.isTextNode(endContainer) && endOffset < endContainer.length) {
-      this.splitTextNode(endContainer, endOffset);
-      newEndOffset = endContainer.length;
+    if (this.isTextNode(newEndContainer) && newEndOffset > 0 && newEndOffset < newEndContainer.length) {
+      this.splitTextNode(newEndContainer, newEndOffset);
+      newEndOffset = newEndContainer.length;
     }
 
     const newRange = document.createRange();
-    newRange.setStart(newStartContainer, newStartOffset);
-    newRange.setEnd(newEndContainer, newEndOffset);
+    
+    if (newStartContainer.parentNode) {
+      newRange.setStart(newStartContainer, newStartOffset);
+    } else {
+      newRange.setStart(startContainer, startOffset);
+    }
+    
+    if (newEndContainer.parentNode) {
+      newRange.setEnd(newEndContainer, newEndOffset);
+    } else {
+      newRange.setEnd(endContainer, endOffset);
+    }
 
     return newRange;
   }
