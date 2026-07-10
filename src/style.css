@@ -14,8 +14,11 @@
 
 .__toolbar {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   padding: 5px;
+  overflow-x: auto;
+  min-height: 40px;
+  align-items: center;
 }
 
 .__toolbar-item {
